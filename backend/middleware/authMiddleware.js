@@ -28,12 +28,12 @@ const authMiddleware = (requiredRole) => {
     };
 };
 
-// Middleware for student-specific access
+// Middleware for student routes
 const studentMiddleware = (req, res, next) => {
     authMiddleware('student')(req, res, next);
 };
 
-// Middleware for admin-specific access
+// Middleware for admin routes
 const adminMiddleware = (req, res, next) => {
     authMiddleware('admin')(req, res, next);
 };
