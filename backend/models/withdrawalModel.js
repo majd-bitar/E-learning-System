@@ -6,6 +6,6 @@ const withdrawalSchema = new mongoose.Schema({
     status:{type:String,enum:['pending','approved','rejected'],required:true},
 },{timestamps:true});
 
-const Withdrawal = mongoose.model(withdrawalSchema);
+const Withdrawal = mongoose.model('Withdrawal',withdrawalSchema);
 
 export default Withdrawal;

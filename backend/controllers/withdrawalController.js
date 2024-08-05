@@ -1,6 +1,6 @@
-import Withdrawal from "../models/withdrawalModel";
-import Class from "../models/classModel";
-import User from "../models/userModel";
+import Withdrawal from "../models/withdrawalModel.js";
+import Class from "../models/classModel.js";
+
 
 
 //user requests a withdraw from a course
@@ -52,4 +52,4 @@ const handleWithdrawal = async (req,res)=>{
 }
 
 
-export default (userWithdraw,handleWithdrawal);
+export default {userWithdraw,handleWithdrawal};

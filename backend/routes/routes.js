@@ -1,22 +1,37 @@
 import express from "express";
 import userController from "../controllers/userController.js";
-import { adminMiddleware, studentMiddleware } from '../middleware/authMiddleware.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import classController from "../controllers/classController.js";
+import withdrawalController from "../controllers/withdrawalController.js";
+import fileController from "../controllers/fileController.js";
 
+
+const adminMiddleware = authMiddleware.adminMiddleware;
+const studentMiddleware= authMiddleware.studentMiddleware;
 const router = express.Router();
 
-//User Routes
-router.post('/register',userController.registerUser);
-router.post('/login',userController.loginUser);
+// User Routes
+const userRouter = express.Router();
+userRouter.post('/register', userController.registerUser);
+userRouter.post('/login', userController.loginUser);
 
+// Student Routes related to class
+const studentRouter = express.Router();
+studentRouter.post('/enroll', studentMiddleware, classController.enrollClass);
 
-//Student Routes related to class
-router.post('/enroll', studentMiddleware, classController.enrollInClass);
+// Student Routes related to file downloading
+studentRouter.post('/download-file',studentMiddleware,fileController.downloadFile);
 
+// Admin Routes
+const adminRouter = express.Router();
+adminRouter.post('/add-class', adminMiddleware, classController.addClass);
+adminRouter.get('/list-students/:classID', adminMiddleware, classController.listStudents);
+adminRouter.post('/upload-file/:classID', adminMiddleware, fileController.uploadFile);
+adminRouter.post('/handle-withdrawal', adminMiddleware, withdrawalController.handleWithdrawal);
 
-//Admin Routes
-router.post('/add-class', adminMiddleware, adminController.addClass);
-router.get('/list-students/:classID', adminMiddleware, adminController.listStudentsInClass);
-router.post('/upload-files', adminMiddleware, adminController.uploadFiles);
-router.post('/handle-withdrawal', adminMiddleware, adminController.handleWithdrawal);
+// Use the routers
+router.use('/user', userRouter);
+router.use('/student', studentRouter);
+router.use('/admin', adminRouter);
 
 export default router;

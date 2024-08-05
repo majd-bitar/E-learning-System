@@ -38,4 +38,4 @@ const adminMiddleware = (req, res, next) => {
     authMiddleware('admin')(req, res, next);
 };
 
-export default { adminMiddleware, studentMiddleware, authenticate };
+export default { adminMiddleware, studentMiddleware };
