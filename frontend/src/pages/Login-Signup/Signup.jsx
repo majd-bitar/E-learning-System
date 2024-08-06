@@ -70,7 +70,7 @@ const SignUpForm = () => {
       }),
     });
     const data = await response.json();
-      if(data.message==="User created successfully"){
+      if(data.message==="User registered successfully"){
         console.log("created");
         togglePopup();
       }

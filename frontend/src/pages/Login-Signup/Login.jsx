@@ -38,46 +38,46 @@ const SignInForm = () => {
     setEmailFlag(email !== '' && !validateEmail(email));
   }, [email]);
 
-  /* 
-  const validatePassword = () => {
-    // Minimum 8 characters, at least one letter, one number and one special character
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    return passwordRegex.test(password);
-  };*/
-
-  const handleLogin = async (e)=>{
-      e.preventDefault();
-      if(email===''||password===''){
-        toggleEmptyFieldsPopup();
-      }
-      else {
-      const URL = 'http://localhost:8080/api/login';
-      const response = await fetch(URL, {
-        method: 'POST', 
-        headers: {
-          'Content-Type': 'application/json', 
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
-
-      const data = await response.json();
-      console.log(data);
-      //console.log(data.authorisation.token);
-      if(data.message==="Invalid email or password."){
-        togglePopup();
-      }
-      else if(data.status==="success"){
-        localStorage.setItem("user-token",data.authorisation.token);
-        if(data.role==='admin')
-          nav("/admin")
-        else
-          nav('/');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (email === '' || password === '') {
+      toggleEmptyFieldsPopup();
+    } else {
+      const URL = 'http://localhost:8080/api/user/login';
+      try {
+        const response = await fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        console.log(data);
+        
+        if (data.message === "Invalid email or password.") {
+          togglePopup();
+        } else if (data.message === "User Logged In") {
+          localStorage.setItem("user-token", data.token);
+          if (data.role === 'admin')
+            nav("/admin");
+          else
+            nav('/');
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
       }
     }
-  }
+  };
+  
 
   return (
     <div className="form-container sign-in-container">
