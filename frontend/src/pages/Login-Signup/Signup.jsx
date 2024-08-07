@@ -5,7 +5,6 @@ import Input from "../../base/Input";
 import Button from "../../base/Button";
 import Socials from "../../components/Socials";
 import Popup from "../../base/Popup";
-import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
   const [name, setName] = useState("");
@@ -56,7 +55,7 @@ const SignUpForm = () => {
       toggleEmptyFieldsPopup();
     }
     else {
-    const URL = 'http://localhost:8080/api/register';
+    const URL = 'http://localhost:8080/api/user/register';
     const response = await fetch(URL, {
       method: 'POST', 
       headers: {

@@ -67,12 +67,15 @@ const SignInForm = () => {
           togglePopup();
         } else if (data.message === "User Logged In") {
           localStorage.setItem("user-token", data.token);
-          if (data.role === 'admin')
-            nav("/admin");
-          else
-            nav('/');
+          if (data.role === 'admin'){
+             <Popup caution={'!!'} message='Login from the desktop app lease' onClose={()=>{setEmptyFieldsPopup(false)}}></Popup>
+            }
+            else if(data.role === 'student'){
+            nav('/student');
+            }
+          }   
         }
-      } catch (error) {
+       catch (error) {
         console.error('Fetch error:', error);
       }
     }

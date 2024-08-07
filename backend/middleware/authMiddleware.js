@@ -13,18 +13,22 @@ const authMiddleware = (requiredRole) => {
 
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
+                console.error('Token verification error:', err);
                 return res.status(403).json({ message: 'Invalid token' });
             }
-
+        
+            console.log('Decoded token:', decoded); 
             req.user = decoded;
-
+        
             // Check user role if a role is required
             if (requiredRole && req.user.role !== requiredRole) {
+                console.warn(`Access denied for role: ${req.user.role}. Required role: ${requiredRole}`);
                 return res.status(403).json({ message: 'Access denied' });
             }
-
+        
             next();
         });
+        
     };
 };
 

@@ -6,9 +6,9 @@ import Class from "../models/classModel.js";
 //user requests a withdraw from a course
 const userWithdraw = async(req,res)=>{
     try{
-        //take the classID from the body, and the userID sent in the body with the token
-        const {classID} = req.body;
-        const userID = req.user.id;
+        //take the classID from the URL, and the userID sent in the body with the token
+        const {classID} = req.params;
+        const userID = req.user.id; // extract from token
 
         const withdrawalRequest = new Withdrawal({
             user:userID,

@@ -9,9 +9,8 @@ const initialState={
 const userSlice = createSlice({
     name:'users',
     initialState,
-
     reducers:{
-        fetchUserSuccess: (state,payload)=>{
+        fetchUserSuccess: (state,action)=>{
             state.users = action.payload;
             state.status = 'succeeded';
         },
@@ -28,5 +27,8 @@ const userSlice = createSlice({
     }
 });
 
-export const { fetchUsersSuccess, fetchUsersFailure, addUser, removeUser } = userSlice.actions;
-export default userSlice.reducer;
+//action creaters
+export const { fetchUserSuccess, fetchUsersFailure, addUser, removeUser } = userSlice.actions;
+
+//export combined reducer
+export const userReducer = userSlice.reducer;

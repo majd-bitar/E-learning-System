@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import SignInForm from "./Login.jsx";
 import SignUpForm from "./Signup.jsx";
+import Button from "../../base/Button";
 
 const LoginSignup = ()=> {
   const [type, setType] = useState("signIn");
@@ -25,24 +26,26 @@ const LoginSignup = ()=> {
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
               <p>To keep connected with us please login with your personal info</p>
-              <button
+              <Button
+                text={'Sign in'}
                 className="ghost"
                 id="signIn"
                 onClick={() => handleOnClick("signIn")}
               >
                 Sign In
-              </button>
+              </Button>
             </div>
             <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
               <p>Enter your personal details and start your journey with us</p>
-              <button
+              <Button
+                text={'Sign up'}
                 className="ghost"
                 id="signUp"
                 onClick={() => handleOnClick("signUp")}
               >
                 Sign Up
-              </button>
+              </Button>
             </div>
           </div>
         </div>

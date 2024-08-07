@@ -17,8 +17,12 @@ userRouter.post('/login', userController.loginUser);
 
 // Student Routes related to class
 const studentRouter = express.Router();
-studentRouter.post('/enroll', studentMiddleware, classController.enrollClass);
+studentRouter.post('/enroll/:classID', studentMiddleware, classController.enrollClass);
+studentRouter.get('/classes',studentMiddleware,classController.getAllClasses);
+studentRouter.get('/enrolled-classes',studentMiddleware,classController.getEnrolledClasses);
 
+//Student Routes related to withdrawal
+studentRouter.post('/withdraw/:classID', studentMiddleware, withdrawalController.userWithdraw);
 // Student Routes related to file downloading
 studentRouter.post('/download-file',studentMiddleware,fileController.downloadFile);
 
