@@ -1,8 +1,10 @@
-import * as React from 'react';
-import {createRoot} from 'react-dom/client';
-import Home from './components/Home.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './styles/index.css';
+import App from './App.jsx';
 
-const root = createRoot(document.body);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Home></Home>
-)
+    <App />
+);
+

@@ -1,0 +1,24 @@
+.upload-files {
+    padding: 20px;
+  }
+  
+  .upload-files h2 {
+    margin-bottom: 20px;
+  }
+  
+  .upload-files input {
+    margin-bottom: 10px;
+  }
+  
+  .upload-files button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .upload-files button:hover {
+    background-color: #0056b3;
+  }
+  

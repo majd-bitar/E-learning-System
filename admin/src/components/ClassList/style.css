@@ -1,0 +1,17 @@
+.class-list {
+    padding: 20px;
+  }
+  
+  .class-list h2 {
+    margin-bottom: 20px;
+  }
+  
+  .class-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .class-list li {
+    margin-bottom: 10px;
+  }
+  

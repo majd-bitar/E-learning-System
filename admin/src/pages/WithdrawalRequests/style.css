@@ -1,0 +1,54 @@
+.withdrawal-requests-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .withdrawal-requests-container h1 {
+    font-size: 24px;
+    color: #333333;
+  }
+  
+  .withdrawal-requests-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .withdrawal-requests-container li {
+    padding: 10px;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .withdrawal-requests-container li:last-child {
+    border-bottom: none;
+  }
+  
+  .withdrawal-requests-container button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .withdrawal-requests-container button.approve {
+    background-color: #28a745;
+  }
+  
+  .withdrawal-requests-container button.reject {
+    background-color: #dc3545;
+  }
+  
+  .withdrawal-requests-container button:hover.approve {
+    background-color: #218838;
+  }
+  
+  .withdrawal-requests-container button:hover.reject {
+    background-color: #c82333;
+  }
+  
