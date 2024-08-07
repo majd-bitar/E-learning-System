@@ -40,6 +40,7 @@ const StudentPage = () => {
 
         const fetchEnrolledClasses = async () => {
             try {
+                
                 const data = await requestApi({
                     route: '/student/enrolled-classes',
                     requestMethod: RequestMethods.GET,
